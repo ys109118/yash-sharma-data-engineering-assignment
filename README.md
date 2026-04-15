@@ -3,7 +3,7 @@
 **Name:** Yash Sharma  
 **Roll Number:** A50105222002  
 **Branch:** B.Tech - CSE  
-**Assignment:** KieSquare Analytics — Data Engineering Internship 2026
+**Assignment:** KieSquare Analytics — Data Engineering Assignment 
 
 ---
 
@@ -34,8 +34,8 @@
 
 ### 1. Prerequisites
 
-- Python 3.10+
-- PostgreSQL 14+ running locally (default port 5432)
+- Python 
+- PostgreSQL  
 - Raw CSV files placed at the project root: `2019-Oct.csv`, `2019-Nov.csv`
 
 ### 2. Install dependencies
