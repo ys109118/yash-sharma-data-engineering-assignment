@@ -187,6 +187,5 @@ The primary bottleneck was dimension table upserts (`dim_users`, `dim_products`)
 ## Assumptions & Known Limitations
 
 - Price threshold of $50,000 is used to flag anomalous prices; this covers all realistic consumer electronics.
-- `user_session` is treated as a string UUID; no session timeout logic is applied.
 - The pipeline assumes both CSV files fit in available disk space before loading.
 - PostgreSQL must be running locally; no cloud deployment is included in this submission.
