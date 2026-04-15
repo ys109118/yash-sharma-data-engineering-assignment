@@ -181,14 +181,6 @@ The `source_month` column in `fact_events` is a derived column that enables effi
 
 The primary bottleneck was dimension table upserts (`dim_users`, `dim_products`) running before every fact batch. With 10M+ unique users and products, these upserts became the slowest step. The fix was to collect unique dimension keys across the entire chunk first and issue a single bulk `INSERT … ON CONFLICT DO NOTHING` per dimension per chunk, rather than row-by-row inserts.
 
-### Scaling to 1TB+
-
-For a 10x larger dataset (~1TB), the approach would change significantly:
-
-1. **Storage**: Move from PostgreSQL to a columnar store (Amazon Redshift, BigQuery, or DuckDB on Parquet files). Columnar storage compresses repetitive string columns (event_type, brand) by 5–10x and enables predicate pushdown.
-2. **Processing**: Replace Pandas with PySpark or Polars for distributed/vectorised processing. Pandas loads entire chunks into RAM; Polars processes lazily and is 5–20x faster on large files.
-3. **Orchestration**: Use Apache Airflow with a DAG per monthly file, enabling parallel ingestion of Oct and Nov simultaneously.
-4. **Partitioning**: Partition `fact_events` by `source_month` (range partition) so queries filtered to a single month skip the other partition entirely.
 
 ---
 
