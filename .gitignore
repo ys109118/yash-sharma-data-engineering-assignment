@@ -3,6 +3,5 @@
 __pycache__/
 *.pyc
 .ipynb_checkpoints/
-reports/*.png
 reports/*.pdf
 *.db
